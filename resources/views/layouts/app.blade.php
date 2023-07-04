@@ -29,7 +29,26 @@
 
             <!-- Page Content -->
             <main>
-                {{ $slot }}
+                <div class="flex h-screen">
+                    {{-- Sidebar --}}
+                    <div class="w-64 bg-blue-400 flex flex-col flex-wrap space-y-2 p-2 h-full">
+                        <a href="{{ route('admin.categories.index') }}">
+                          <x-side-button>
+                            Categorias
+                          </x-side-button>
+                        </a>
+            
+                        <a href="{{ route('admin.properties.index') }}">
+                          <x-side-button>
+                            Propiedades
+                          </x-side-button>
+                        </a>
+                    </div>
+            
+                    <div class="flex-1 w-full p-8">
+                        {{ $slot }}
+                    </div>
+                </div>
             </main>
         </div>
     </body>

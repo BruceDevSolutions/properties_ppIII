@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('title');
             $table->text('description')->nullable();
             $table->enum('status', ['visible', 'draft','hidden'])->default('draft');
+            
             $table->double('price', 8, 2);
 
             $table->unsignedBigInteger('user_id');

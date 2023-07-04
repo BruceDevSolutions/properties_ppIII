@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\CategoryController as AdminCategoryController;
+use App\Http\Controllers\Admin\PropertyController as AdminPropertyController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
@@ -35,16 +36,27 @@ Route::get('admin', function() {
     return view('admin.index');
 })->middleware(['auth', 'verified']);
 
+
+// Categor[ias]
 Route::get('admin/categories', [AdminCategoryController::class, 'index'])->middleware(['auth', 'verified'])->name('admin.categories.index');
 
 Route::get('admin/categories/create', [AdminCategoryController::class, 'create'])->middleware(['auth', 'verified'])->name('admin.categories.create');
 
 Route::post('admin/categories', [AdminCategoryController::class, 'store'])->middleware(['auth', 'verified'])->name('admin.categories.store');
 
+Route::get('admin/categories/{category}/edit', [AdminCategoryController::class, 'edit'])->middleware(['auth', 'verified'])->name('admin.categories.edit');
+
+Route::put('admin/categories/{category}', [AdminCategoryController::class, 'update'])->middleware(['auth', 'verified'])->name('admin.categories.update');
+
+Route::delete('admin/categories/{category}', [AdminCategoryController::class, 'destroy'])->middleware(['auth', 'verified'])->name('admin.categories.destroy');
 
 
+// Admin properties
+Route::get('admin/properties', [AdminPropertyController::class, 'index'])->middleware(['auth', 'verified'])->name('admin.properties.index');
 
+Route::get('admin/properties/create', [AdminPropertyController::class, 'create'])->middleware(['auth', 'verified'])->name('admin.properties.create');
 
+Route::post('admin/properties', [AdminPropertyController::class, 'store'])->middleware(['auth', 'verified'])->name('admin.properties.store');
 
 
 

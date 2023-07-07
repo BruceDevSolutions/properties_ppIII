@@ -13,7 +13,7 @@ class PropertyController extends Controller
     public function index() {
         $categories = Category::all();
 
-        $properties = Property::where('status', 'visible')->paginate(6);
+        $properties = Property::where('status', 'visible')->orderBy('id', 'desc')->paginate(6);
 
         return view('home', compact('properties', 'categories'));
     }

@@ -6,9 +6,17 @@
         <Div class="grid grid-cols-3 gap-4 rounded-lg ">
             @foreach ($properties as $property)
                 <a href="{{ route('properties.show', $property->id) }}">
-
                     <x-card>
-                        <img class="rounded-lg mb-2" src="{{ $property->images[0]->path }}" alt="">
+
+                        @isset($property->images[0]) 
+                            <img class="rounded-lg mb-2" src="{{ $property->images[0]->path }}" alt="">
+                            
+                        {{-- Si existe haces esto --}}
+                        @else
+                            <img class="rounded-lg mb-2" src="https://definicion.de/wp-content/uploads/2011/01/casa-2.jpg" alt="">
+                            
+                        {{-- Si no existe haces esto --}}
+                        @endisset()
     
                         <h2 class="font-semibold text-xl text-gray-800 text-center">{{ $property->title }}</h2>
                         
@@ -29,7 +37,16 @@
                                 <span class="font-semibold">
                                     Modalidad:
                                 </span>
-                                {{ $property->mode->mode }}</p>
+                                @isset($property->mode) 
+                                <img class="rounded-lg mb-2" src="{{ $property->images[0]->path }}" alt="">
+                                    {{ $property->mode->mode }}
+                                    
+                                {{-- Si existe haces esto --}}
+                                @else
+                                    -
+                                {{-- Si no existe haces esto --}}
+                                @endisset()
+                            </p>
                         </div>
                     </x-card>
                 </a>
